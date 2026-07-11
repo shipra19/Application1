@@ -6,10 +6,7 @@ input_box=FreeSimpleGUI.InputText(tooltip="Enter here", key="i")
 add_button=FreeSimpleGUI.Button("Add")
 
 window = FreeSimpleGUI.Window("My To-Do App",
-                              layout=[
-                                  [label],
-                                  [input_box, add_button]
-                                      ],
+                              layout=[[label],[input_box, add_button]                                      ],
                               font=("Arial", 20))
 while True:
     event,values=window.read()
