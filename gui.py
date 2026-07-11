@@ -29,7 +29,8 @@ while True:
             todos[index]=new_todo+ "\n"
             functions.write_todos(todos)
             window["j"].update(values=todos)
-
+        case "j":
+            window["i"].update(value=values["j"][0])
         case FreeSimpleGUI.WIN_CLOSED:
             break
 window.close()
