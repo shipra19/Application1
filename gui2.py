@@ -5,8 +5,6 @@ import functions
 import time
 
 FreeSimpleGUI.theme("BrightColors")
-
-
 clock=FreeSimpleGUI.Text("",key="c")
 label=FreeSimpleGUI.Text("Type in a to-do item")
 input_box=FreeSimpleGUI.InputText(tooltip="Enter here", key="i")
