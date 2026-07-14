@@ -6,9 +6,14 @@ input_box=FreeSimpleGUI.InputText(tooltip="Enter here", key="i")
 add_button=FreeSimpleGUI.Button("Add")
 list_box=FreeSimpleGUI.Listbox(values=functions.get_todos(), key="j", enable_events=True, size=(45,10))
 edit_button=FreeSimpleGUI.Button("Edit")
+complete_button=FreeSimpleGUI.Button("Complete")
+exit_button=FreeSimpleGUI.Button("Exit")
 
 window = FreeSimpleGUI.Window("My To-Do App",
-                              layout=[[label],[input_box, add_button],[list_box, edit_button] ],
+                              layout=[[label],
+                                      [input_box, add_button],
+                                      [list_box, edit_button, complete_button],
+                                      [exit_button]],
                               font=("Arial", 20))
 while True:
     event,values=window.read()
@@ -29,6 +34,15 @@ while True:
             todos[index]=new_todo+ "\n"
             functions.write_todos(todos)
             window["j"].update(values=todos)
+        case "Complete":
+            complete_todo = values["j"][0]
+            todos = functions.get_todos()
+            todos.remove(complete_todo)
+            functions.write_todos(todos)
+            window["j"].update(values=todos)
+            window["i"].update(value='')
+        case "Exit":
+            break
         case "j":
             window["i"].update(value=values["j"][0])
         case FreeSimpleGUI.WIN_CLOSED:
